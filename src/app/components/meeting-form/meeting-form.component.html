@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>New Meeting</h1>
+<form [formGroup]="meetingForm">
+  <input type="hidden" formControlName="id" name="id" />
+  <mat-form-field class="exemple-full-width">
+    <mat-label>Meeting Name</mat-label>
+    <input
+      matInput
+      placeholder="Meeting Name"
+      formControlName="meetingName"
+      name="meetingName"
+    />
+  </mat-form-field>
+  <mat-form-field class="exemple-full-width">
+    <mat-label>Meeting Subject</mat-label>
+    <input
+      matInput
+      placeholder="Meeting Subject"
+      formControlName="meetingSubject"
+      name="meetingSubject"
+    />
+  </mat-form-field>
+  <mat-form-field class="exemple-full-width">
+    <mat-label>meeting Responsable</mat-label>
+    <input
+      matInput
+      placeholder="meeting Responsable"
+      formControlName="meetingResponsable"
+      name="meetingResponsable"
+    />
+  </mat-form-field>
+  <div fxLayout="row wrap">
+    <div fxFlex="50" fxFill fxLayoutAlign="start center">
+      <mat-form-field class="example-full-width">
+        <mat-label>meeting Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="meeting Date"
+          formControlName="meetingDate"
+          name="meetingDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxFlex="50" fxFill fxLayoutAlign="start center">
+      <mat-form-field class="exemple-full-width">
+        <mat-label>meeting Time</mat-label>
+        <input
+          matInput
+          type="time"
+          placeholder="meeting Time"
+          formControlName="meetingTime"
+          name="meetingTime"
+          #time
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button
+      mat-raised-button
+      [disabled]="!meetingForm.valid"
+      (click)="save()"
+      color="primary"
+    >
+      Salvar
+    </button>
+  </div>
+</form>
